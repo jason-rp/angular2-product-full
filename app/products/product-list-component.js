@@ -25,7 +25,7 @@ var ProductListComponent = (function () {
         var _this = this;
         console.log('OnInit');
         this._productService.getProducts()
-            .subscribe(function (products) { return _this.products = products; });
+            .subscribe(function (products) { return _this.products = products; }, function (error) { return _this.errorMessage = error; });
     };
     ProductListComponent.prototype.onRatingClicked = function (message) {
         this.pageTitle = 'Product List ' + message;
