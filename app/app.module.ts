@@ -8,8 +8,21 @@ import {WelcomeComponent} from './home/welcome.component';
 import {ProductFilterPipe} from './products/product-filter-pipe';
 import {StarComponent} from './shared/star.component';
 import { HttpModule } from '@angular/http';
+import { RouterModule } from '@angular/router';
+
 @NgModule({
-  imports: [ BrowserModule , FormsModule , HttpModule],
+  imports: [
+     BrowserModule ,
+     FormsModule ,
+     HttpModule,
+     RouterModule.forRoot([
+        {path: 'product', component: ProductListComponent},
+        {path: 'product/:id', component: ProductDetailComponent},
+        {path: 'welcome', component: WelcomeComponent},
+        {path: '', redirectTo: 'welcome', pathMatch: 'full'},
+        {path: '**', redirectTo: 'welcome', pathMatch: 'full'}
+      ])
+      ],
   declarations: [
     AppComponent,
     ProductListComponent , ProductFilterPipe,
@@ -18,4 +31,4 @@ import { HttpModule } from '@angular/http';
 })
 export class AppModule {
 
- }
+}
